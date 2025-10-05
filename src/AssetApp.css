@@ -1,0 +1,305 @@
+/* ================= Contenedor Principal ================= */
+.asset-app {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 1rem;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   color: #1f2937; /* gris oscuro */
+}
+
+/* ================= Botón Principal ================= */
+.add-asset-button {
+   background: linear-gradient(90deg, #6366f1, #4f46e5);
+   color: white;
+   border: none;
+   padding: 0.6rem 1.2rem;
+   border-radius: 8px;
+   cursor: pointer;
+   font-weight: bold;
+   margin-bottom: 1rem;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-asset-button:hover {
+   background: linear-gradient(90deg, #4f46e5, #4338ca);
+   transform: translateY(-2px);
+}
+
+/* ================= Tabla de Assets ================= */
+.asset-content {
+   max-height: 800px; /* límite visible para la tabla */
+   overflow-y: auto; /* scroll vertical si excede */
+   border-radius: 12px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+   background-color: white;
+}
+
+.asset-table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 1rem;
+}
+
+.table-header {
+   background-color: #f0f0f0;
+   font-weight: bold;
+}
+
+.table-cell {
+   padding: 0.75rem 1rem;
+   text-align: center;
+   border-bottom: 1px solid #e5e7eb;
+   vertical-align: middle;
+}
+
+.table-row:hover {
+   background-color: #f3f4f6;
+}
+
+.table-row:nth-child(even) {
+   background-color: #fafafa;
+}
+
+/* ================= Botones de acción ================= */
+.actions-cell {
+   display: flex;
+   gap: 0.5rem;
+   justify-content: center;
+   align-items: center; /* importante para centrar vertical */
+   padding: 0.5rem 0; /* opcional, reduce altura */
+}
+
+.edit-button {
+   background-color: #fbbf24; /* amarillo */
+   color: white;
+   border-radius: 6px;
+   padding: 0.4rem 0.8rem;
+   border: none;
+   cursor: pointer;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+   transition: all 0.2s ease;
+   vertical-align: middle;
+}
+
+.edit-button:hover {
+   background-color: #f59e0b;
+   transform: translateY(-1px);
+}
+
+.delete-button {
+   background-color: #ef4444; /* rojo */
+   color: white;
+   border-radius: 6px;
+   padding: 0.4rem 0.8rem;
+   border: none;
+   cursor: pointer;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+   transition: all 0.2s ease;
+}
+
+.delete-button:hover {
+   background-color: #b91c1c;
+   transform: translateY(-1px);
+}
+
+.edit-button {
+   background-color: #fbbf24;
+   color: white;
+   border-radius: 6px;
+   padding: 0.4rem 0.8rem;
+   border: none;
+   cursor: pointer;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+   transition: all 0.2s ease;
+}
+
+.edit-button:hover {
+   background-color: #f59e0b;
+   transform: translateY(-1px);
+}
+
+.delete-button {
+   background-color: #ef4444;
+   color: white;
+   border-radius: 6px;
+   padding: 0.4rem 0.8rem;
+   border: none;
+   cursor: pointer;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+   transition: all 0.2s ease;
+}
+
+.delete-button:hover {
+   background-color: #b91c1c;
+   transform: translateY(-1px);
+}
+
+/* ================= Mensajes ================= */
+.loading-text,
+.empty-text {
+   font-size: 1rem;
+   color: #6b7280;
+   text-align: center;
+   padding: 2rem 0;
+}
+
+/* ================= Modal Overlay ================= */
+.modal-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(31, 41, 55, 0.7); /* semi oscuro */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+   padding: 1rem;
+}
+
+/* ================= Modal Box ================= */
+.modal {
+   background-color: white;
+   padding: 2rem;
+   border-radius: 16px;
+   max-width: 500px;
+   width: 100%;
+   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+   text-align: center;
+   position: relative;
+}
+
+.modal h2 {
+   margin-bottom: 1rem;
+   font-size: 1.5rem;
+   color: #4f46e5;
+}
+
+.modal p {
+   margin-bottom: 1rem;
+   font-size: 1.1rem;
+   color: #111827;
+}
+
+/* ================= Formulario Modal ================= */
+.modal-form .form-group {
+   margin-bottom: 1rem;
+   text-align: left;
+}
+
+.modal-form label {
+   display: block;
+   font-weight: 600;
+   margin-bottom: 0.25rem;
+   color: #374151;
+}
+
+.modal-form input {
+   width: 100%;
+   padding: 0.5rem 0.75rem;
+   border-radius: 8px;
+   border: 1px solid #d1d5db;
+   outline: none;
+   font-size: 1rem;
+   transition: all 0.2s;
+}
+
+.modal-form input:focus {
+   border-color: #4f46e5;
+   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.modal-form input:disabled {
+   background-color: #f3f4f6;
+}
+
+/* ================= Botones Modal ================= */
+.modal-buttons {
+   display: flex;
+   justify-content: flex-end;
+   gap: 0.5rem;
+   margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+   padding: 0.5rem 1rem;
+   border-radius: 8px;
+   border: none;
+   font-weight: 600;
+   cursor: pointer;
+   transition: all 0.3s ease;
+}
+
+.modal-buttons button[type="submit"] {
+   background-color: #4f46e5;
+   color: white;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-buttons button[type="submit"]:hover {
+   background-color: #4338ca;
+   transform: translateY(-1px);
+}
+
+.modal-buttons button[type="button"] {
+   background-color: #e5e7eb;
+}
+
+.modal-buttons button[type="button"]:hover {
+   background-color: #d1d5db;
+   transform: translateY(-1px);
+}
+
+/* ================= Mensaje de Confirmación ================= */
+.message-modal {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.message-modal button {
+   margin-top: 1rem;
+   padding: 0.5rem 1rem;
+   background-color: #4f46e5;
+   color: white;
+   border-radius: 8px;
+   border: none;
+   cursor: pointer;
+}
+
+.message-modal button:hover {
+   background-color: #4338ca;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+   .asset-table,
+   .table-cell {
+      font-size: 0.9rem;
+   }
+
+   .modal {
+      padding: 1.5rem;
+   }
+
+   .modal-buttons {
+      flex-direction: column;
+   }
+
+   .modal-buttons button {
+      width: 100%;
+   }
+}
+
+@media (max-width: 480px) {
+   .add-asset-button {
+      width: 100%;
+      font-size: 1rem;
+   }
+
+   .asset-table {
+      min-width: 100%;
+   }
+}
