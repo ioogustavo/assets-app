@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# AssetApp - Frontend React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📚 Tabla de Contenido
 
-Currently, two official plugins are available:
+-  [Descripción](#descripción)
+-  [Tecnologías](#tecnologías)
+-  [Características](#características)
+-  [Instalación](#instalación)
+-  [Ejecución del proyecto](#ejecución-del-proyecto)
+-  [Autor](#autor)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Descripción
 
-## React Compiler
+AssetApp es una aplicación web frontend desarrollada en React que permite **gestionar un inventario de assets**.  
+La aplicación implementa un **CRUD completo** (Crear, Leer, Actualizar, Eliminar) consumiendo una API a través de Axios, mostrando los datos en una tabla y utilizando modales para agregar, editar y eliminar assets.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## Tecnologías
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-  **Frontend:** React + TypeScript
+-  **Estilos:** CSS
+-  **HTTP Client:** Axios
+-  **Estado y hooks personalizados:** `useState`, `useEffect`, y `useAssets`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Características
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Listado de assets
+
+-  Muestra todos los assets disponibles en una tabla.
+-  Columnas: **ID, Nombre, Tipo, Propietario, Fecha de creación y actualización**.
+-  La tabla se actualiza automáticamente después de crear, editar o eliminar un asset.
+
+### Agregar un asset
+
+-  Modal para ingresar datos de un nuevo asset.
+-  Los datos se envían directamente a la API (`POST`) y la tabla se actualiza en tiempo real.
+-  Mientras se guarda, los campos quedan deshabilitados para evitar errores.
+
+### Editar un asset
+
+-  Modal con los datos precargados del asset seleccionado.
+-  Permite modificar campos y enviar los cambios a la API (`PUT`).
+-  La tabla se actualiza automáticamente al guardar los cambios.
+
+### Eliminar un asset
+
+-  Confirmación antes de eliminar un asset.
+-  La API (`DELETE`) elimina el asset y la tabla se actualiza automáticamente.
+-  Se muestra un mensaje de éxito tras la eliminación.
+
+### Mensajes de notificación
+
+-  Modal para **mensajes de éxito o error** al crear, editar o eliminar assets.
+-  Permite cerrar el mensaje manualmente.
+
+### Carga inicial
+
+-  La aplicación hace **fetch automático** de todos los assets al cargar la página.
+
+---
+
+## Instalación
+
+```bash
+1. Clonar el repositorio
+git clone https://github.com/ioogustavo/assets-app.git
+
+2. Entrar al directorio
+cd assets-app
+
+3. Ejecutar `npm install` para instalar dependencias
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Ejecución del proyecto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-  **Modo desarrollo:** `npm run dev`
+-  **Modo producción:**
+   1. Ejecutar `npm run build`
+   2. Servir la carpeta `dist/` con cualquier servidor estático (por ejemplo `serve -s dist`)
+
+---
+
+## Autor
+
+Rubén Gustavo Altamiranda
+Proyecto desarrollado como challenge técnico de React.
