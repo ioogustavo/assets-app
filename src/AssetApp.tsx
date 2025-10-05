@@ -152,7 +152,6 @@ export const AssetApp = () => {
          {showModal && (
             <div className="modal-overlay">
                <div className="modal">
-                  {/* Título dinámico según modo */}
                   <h2>
                      {editingAsset ? "Editar Asset" : "Agregar Nuevo Asset"}
                   </h2>
@@ -230,7 +229,7 @@ export const AssetApp = () => {
                               setEditingAsset(null);
                               setNewAsset({ name: "", owner: "", type: "" });
                            }}
-                           disabled={saving} // bloquea salir mientras guarda
+                           disabled={saving}
                         >
                            Cancelar
                         </button>

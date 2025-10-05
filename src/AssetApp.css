@@ -1,4 +1,6 @@
-/* ================= Contenedor Principal ================= */
+/* ==========================
+   CONTENEDOR PRINCIPAL
+========================== */
 .asset-app {
    max-width: 1200px;
    margin: 0 auto;
@@ -7,7 +9,9 @@
    color: #1f2937; /* gris oscuro */
 }
 
-/* ================= Botón Principal ================= */
+/* ==========================
+   BOTÓN PRINCIPAL
+========================== */
 .add-asset-button {
    background: linear-gradient(90deg, #6366f1, #4f46e5);
    color: white;
@@ -26,10 +30,12 @@
    transform: translateY(-2px);
 }
 
-/* ================= Tabla de Assets ================= */
+/* ==========================
+   TABLA DE ASSETS
+========================== */
 .asset-content {
-   max-height: 800px; /* límite visible para la tabla */
-   overflow-y: auto; /* scroll vertical si excede */
+   max-height: 800px;
+   overflow-y: auto;
    border-radius: 12px;
    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
    background-color: white;
@@ -61,25 +67,31 @@
    background-color: #fafafa;
 }
 
-/* ================= Botones de acción ================= */
+/* ==========================
+   BOTONES DE ACCIÓN
+========================== */
 .actions-cell {
    display: flex;
    gap: 0.5rem;
    justify-content: center;
-   align-items: center; /* importante para centrar vertical */
-   padding: 0.5rem 0; /* opcional, reduce altura */
+   align-items: center;
+   padding: 0.5rem 0;
 }
 
-.edit-button {
-   background-color: #fbbf24; /* amarillo */
+.edit-button,
+.delete-button {
    color: white;
+   border: none;
    border-radius: 6px;
    padding: 0.4rem 0.8rem;
-   border: none;
    cursor: pointer;
    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
    transition: all 0.2s ease;
    vertical-align: middle;
+}
+
+.edit-button {
+   background-color: #fbbf24; /* amarillo */
 }
 
 .edit-button:hover {
@@ -89,13 +101,6 @@
 
 .delete-button {
    background-color: #ef4444; /* rojo */
-   color: white;
-   border-radius: 6px;
-   padding: 0.4rem 0.8rem;
-   border: none;
-   cursor: pointer;
-   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-   transition: all 0.2s ease;
 }
 
 .delete-button:hover {
@@ -103,39 +108,9 @@
    transform: translateY(-1px);
 }
 
-.edit-button {
-   background-color: #fbbf24;
-   color: white;
-   border-radius: 6px;
-   padding: 0.4rem 0.8rem;
-   border: none;
-   cursor: pointer;
-   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-   transition: all 0.2s ease;
-}
-
-.edit-button:hover {
-   background-color: #f59e0b;
-   transform: translateY(-1px);
-}
-
-.delete-button {
-   background-color: #ef4444;
-   color: white;
-   border-radius: 6px;
-   padding: 0.4rem 0.8rem;
-   border: none;
-   cursor: pointer;
-   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-   transition: all 0.2s ease;
-}
-
-.delete-button:hover {
-   background-color: #b91c1c;
-   transform: translateY(-1px);
-}
-
-/* ================= Mensajes ================= */
+/* ==========================
+   MENSAJES
+========================== */
 .loading-text,
 .empty-text {
    font-size: 1rem;
@@ -144,14 +119,16 @@
    padding: 2rem 0;
 }
 
-/* ================= Modal Overlay ================= */
+/* ==========================
+   MODAL OVERLAY
+========================== */
 .modal-overlay {
    position: fixed;
    top: 0;
    left: 0;
    width: 100%;
    height: 100%;
-   background-color: rgba(31, 41, 55, 0.7); /* semi oscuro */
+   background-color: rgba(31, 41, 55, 0.7);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -159,7 +136,9 @@
    padding: 1rem;
 }
 
-/* ================= Modal Box ================= */
+/* ==========================
+   MODAL BOX
+========================== */
 .modal {
    background-color: white;
    padding: 2rem;
@@ -183,7 +162,9 @@
    color: #111827;
 }
 
-/* ================= Formulario Modal ================= */
+/* ==========================
+   FORMULARIO MODAL
+========================== */
 .modal-form .form-group {
    margin-bottom: 1rem;
    text-align: left;
@@ -215,7 +196,9 @@
    background-color: #f3f4f6;
 }
 
-/* ================= Botones Modal ================= */
+/* ==========================
+   BOTONES MODAL
+========================== */
 .modal-buttons {
    display: flex;
    justify-content: flex-end;
@@ -252,7 +235,9 @@
    transform: translateY(-1px);
 }
 
-/* ================= Mensaje de Confirmación ================= */
+/* ==========================
+   MENSAJE DE CONFIRMACIÓN
+========================== */
 .message-modal {
    display: flex;
    flex-direction: column;
@@ -267,13 +252,53 @@
    border-radius: 8px;
    border: none;
    cursor: pointer;
+   transition: all 0.3s ease;
 }
 
 .message-modal button:hover {
    background-color: #4338ca;
 }
 
-/* ================= Responsive ================= */
+/* ==========================
+   MODAL DE ÉXITO
+========================== */
+.success-modal {
+   border: 2px solid #22c55e;
+   box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+   animation: fadeIn 0.3s ease;
+}
+
+.success-modal h2 {
+   font-size: 1.5rem;
+   color: #16a34a;
+   margin-bottom: 1rem;
+}
+
+.success-modal p {
+   color: #065f46;
+   font-size: 1rem;
+   margin-bottom: 1.5rem;
+}
+
+.success-modal .modal-buttons button {
+   background-color: #16a34a;
+   color: white;
+   border-radius: 8px;
+   border: none;
+   padding: 0.5rem 1rem;
+   cursor: pointer;
+   font-weight: 600;
+   transition: all 0.3s ease;
+}
+
+.success-modal .modal-buttons button:hover {
+   background-color: #15803d;
+   transform: translateY(-1px);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
 @media (max-width: 768px) {
    .asset-table,
    .table-cell {
@@ -304,31 +329,16 @@
    }
 }
 
-/* ================= Modal de éxito ================= */
-.success-modal h2 {
-   font-size: 1.5rem;
-   color: #16a34a; /* verde bonito */
-   margin-bottom: 1rem;
-}
-
-.success-modal p {
-   font-size: 1.1rem;
-   color: #111827;
-   margin-bottom: 1.5rem;
-}
-
-.success-modal .modal-buttons button {
-   background-color: #16a34a; /* verde */
-   color: white;
-   border-radius: 8px;
-   border: none;
-   padding: 0.5rem 1rem;
-   cursor: pointer;
-   font-weight: 600;
-   transition: all 0.3s ease;
-}
-
-.success-modal .modal-buttons button:hover {
-   background-color: #15803d; /* verde más oscuro */
-   transform: translateY(-1px);
+/* ==========================
+   ANIMACIONES
+========================== */
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
 }
