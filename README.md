@@ -6,6 +6,7 @@
 -  [Tecnologías](#tecnologías)
 -  [Características](#características)
 -  [Instalación](#instalación)
+-  [Configuración](#configuración)
 -  [Ejecución del proyecto](#ejecución-del-proyecto)
 -  [Autor](#autor)
 
@@ -74,6 +75,16 @@ cd assets-app
 3. Ejecutar `npm install` para instalar dependencias
 npm install
 ```
+
+---
+
+## Configuración
+
+1. Crear un archivo `.env` en el directorio raíz del frontend.
+
+2. Copiar el contenido de `.env.template` dentro del `.env`.
+
+3. Completar las variables con los valores que te envié por correo.
 
 ---
 
