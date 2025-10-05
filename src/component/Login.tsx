@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { loginUser } from "../actions/callsApi"; // Ajusta la ruta según tu proyecto
-import type { LoginDto } from "../dto/login.dto";
-import type { AuthResponse } from "../interface/authResponse.interface";
 
 interface LoginProps {
    onLogin: (token: string) => void;
+}
+
+interface LoginDto {
+   username: string;
+   password: string;
+}
+
+interface AuthResponse {
+   access_token: string;
 }
 
 export const Login = ({ onLogin }: LoginProps) => {
