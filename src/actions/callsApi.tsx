@@ -28,16 +28,23 @@ export const postAsset = async (
 export const updateAsset = async (
    asset: Asset
 ): Promise<{ message: string; asset?: Asset }> => {
+   if (!asset.id) return { message: "No se encontró el asset" };
+
+   const baseUrl = import.meta.env.VITE_ALL_ASSETS;
    try {
-      const baseUrl = import.meta.env.VITE_ALL_ASSETS;
-      const { data } = await axios.put<Asset>(
-         `${baseUrl}/update/${asset.id}`,
-         asset
+      const { data } = await axios.put(
+         `${baseUrl}/update/${asset.id}`, // ✅ pasamos el id en la URL
+         {
+            name: asset.name,
+            type: asset.type,
+            owner: asset.owner,
+         }
       );
+
       return { message: "Asset actualizado correctamente", asset: data };
    } catch (error) {
       console.error("Error al actualizar asset:", error);
-      return { message: "No se pudo actualizar el asset" };
+      return { message: "No se pudo editar el asset" };
    }
 };
 

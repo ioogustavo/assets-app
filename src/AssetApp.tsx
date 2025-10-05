@@ -14,6 +14,8 @@ export const AssetApp = () => {
    });
    const [saving, setSaving] = useState(false);
    const [message, setMessage] = useState<string | null>(null);
+   const [editingAsset, setEditingAsset] = useState<Asset | null>(null);
+   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -29,19 +31,42 @@ export const AssetApp = () => {
       });
    };
 
-   const handleEdit = async (asset: Asset) => {
+   const handleEditClick = (asset: Asset) => {
+      setEditingAsset(asset);
+      setNewAsset({
+         id: asset.id, // necesario para identificar cuál asset editar
+         name: asset.name,
+         type: asset.type,
+         owner: asset.owner,
+      });
+      setShowModal(true);
+   };
+
+   const handleEditSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!editingAsset) return; // seguridad
+
       setSaving(true);
-      const msg = await editAsset(asset);
+
+      const msg = await editAsset(newAsset); // se envía id + cambios
+
       setMessage(msg);
       setSaving(false);
+      setShowModal(false);
+      setEditingAsset(null);
+      setNewAsset({
+         name: "",
+         owner: "",
+         type: "",
+      });
    };
 
    const handleDelete = async (id: number) => {
       if (!confirm("¿Seguro quieres eliminar este asset?")) return;
       setSaving(true);
       const msg = await deleteAsset(id);
-      setMessage(msg);
       setSaving(false);
+      setSuccessMessage(msg);
    };
 
    let content;
@@ -84,7 +109,7 @@ export const AssetApp = () => {
                      <td className="table-cell">
                         <button
                            className="edit-button"
-                           onClick={() => handleEdit(asset)}
+                           onClick={() => handleEditClick(asset)}
                         >
                            Editar
                         </button>
@@ -113,7 +138,11 @@ export const AssetApp = () => {
 
          <button
             className="add-asset-button"
-            onClick={() => setShowModal(true)}
+            onClick={() => {
+               setShowModal(true);
+               setNewAsset({ name: "", owner: "", type: "" });
+               setShowModal(true);
+            }}
          >
             Agregar asset
          </button>
@@ -123,8 +152,16 @@ export const AssetApp = () => {
          {showModal && (
             <div className="modal-overlay">
                <div className="modal">
-                  <h2>Agregar Nuevo Asset</h2>
-                  <form onSubmit={handleSubmit} className="modal-form">
+                  {/* Título dinámico según modo */}
+                  <h2>
+                     {editingAsset ? "Editar Asset" : "Agregar Nuevo Asset"}
+                  </h2>
+
+                  {/* Submit dinámico según modo */}
+                  <form
+                     onSubmit={editingAsset ? handleEditSubmit : handleSubmit}
+                     className="modal-form"
+                  >
                      <div className="form-group">
                         <label>
                            Nombre:
@@ -139,7 +176,7 @@ export const AssetApp = () => {
                                  })
                               }
                               required
-                              disabled={saving} // <--- bloquea input mientras guarda
+                              disabled={saving} // bloquea input mientras guarda
                            />
                         </label>
                      </div>
@@ -158,7 +195,7 @@ export const AssetApp = () => {
                                  })
                               }
                               required
-                              disabled={saving} // <--- bloquea input mientras guarda
+                              disabled={saving} // bloquea input mientras guarda
                            />
                         </label>
                      </div>
@@ -177,7 +214,7 @@ export const AssetApp = () => {
                                  })
                               }
                               required
-                              disabled={saving} // <--- bloquea input mientras guarda
+                              disabled={saving} // bloquea input mientras guarda
                            />
                         </label>
                      </div>
@@ -188,8 +225,12 @@ export const AssetApp = () => {
                         </button>
                         <button
                            type="button"
-                           onClick={() => setShowModal(false)}
-                           disabled={saving} // <--- bloquea salir mientras guarda
+                           onClick={() => {
+                              setShowModal(false);
+                              setEditingAsset(null);
+                              setNewAsset({ name: "", owner: "", type: "" });
+                           }}
+                           disabled={saving} // bloquea salir mientras guarda
                         >
                            Cancelar
                         </button>
@@ -204,6 +245,23 @@ export const AssetApp = () => {
                <div className="modal">
                   <p>{message}</p>
                   <button onClick={() => setMessage(null)}>Cerrar</button>
+               </div>
+            </div>
+         )}
+
+         {successMessage && (
+            <div className="modal-overlay">
+               <div className="modal success-modal">
+                  <h2>✅ Asset Eliminado</h2>
+                  <p>{successMessage}</p>
+                  <div className="modal-buttons">
+                     <button
+                        type="button"
+                        onClick={() => setSuccessMessage(null)}
+                     >
+                        Cerrar
+                     </button>
+                  </div>
                </div>
             </div>
          )}

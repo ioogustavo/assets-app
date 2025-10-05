@@ -303,3 +303,32 @@
       min-width: 100%;
    }
 }
+
+/* ================= Modal de éxito ================= */
+.success-modal h2 {
+   font-size: 1.5rem;
+   color: #16a34a; /* verde bonito */
+   margin-bottom: 1rem;
+}
+
+.success-modal p {
+   font-size: 1.1rem;
+   color: #111827;
+   margin-bottom: 1.5rem;
+}
+
+.success-modal .modal-buttons button {
+   background-color: #16a34a; /* verde */
+   color: white;
+   border-radius: 8px;
+   border: none;
+   padding: 0.5rem 1rem;
+   cursor: pointer;
+   font-weight: 600;
+   transition: all 0.3s ease;
+}
+
+.success-modal .modal-buttons button:hover {
+   background-color: #15803d; /* verde más oscuro */
+   transform: translateY(-1px);
+}

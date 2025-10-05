@@ -48,6 +48,7 @@ export const useAssets = (): {
             prev.map((a) => (a.id === asset.id ? res.asset! : a))
          );
       }
+      await fetchAssets();
       return res.message;
    };
 
