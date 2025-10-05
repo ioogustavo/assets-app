@@ -7,6 +7,7 @@ import { AssetModal } from "./component/AssetModal";
 import { MessageModal } from "./component/MessageModal";
 import { DeleteSuccessModal } from "./component/DeleteSuccessModal";
 import type { Asset } from "./interface/asset.interface";
+import { Login } from "./component/Login";
 
 export const AssetApp = () => {
    const { response, loading, addAsset, editAsset, deleteAsset } = useAssets();
@@ -20,6 +21,11 @@ export const AssetApp = () => {
    const [saving, setSaving] = useState(false);
    const [message, setMessage] = useState<string | null>(null);
    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+   if (!isLoggedIn) {
+      return <Login onLogin={() => setIsLoggedIn(true)} />;
+   }
 
    const openNewModal = () => {
       setEditingAsset(null);

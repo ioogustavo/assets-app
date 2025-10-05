@@ -1,6 +1,15 @@
 import axios from "axios";
 import type { Asset } from "../interface/asset.interface";
 
+interface LoginDto {
+   username: string;
+   password: string;
+}
+
+interface AuthResponse {
+   access_token: string;
+}
+
 export const getAllAssets = async (): Promise<Asset[]> => {
    try {
       const baseUrl = import.meta.env.VITE_ALL_ASSETS;
@@ -58,5 +67,21 @@ export const removeAsset = async (
    } catch (error) {
       console.error("Error al eliminar asset:", error);
       return { message: "No se pudo eliminar el asset", success: false };
+   }
+};
+
+export const loginUser = async (data: LoginDto): Promise<AuthResponse> => {
+   try {
+      const baseUrl = import.meta.env.VITE_ALL_ASSETS;
+      const { data: res } = await axios.post<AuthResponse>(
+         `${baseUrl}/auth/login`,
+         data
+      );
+      return res;
+   } catch (error: any) {
+      console.error("Error en login:", error);
+      throw new Error(
+         error?.response?.data?.message || "Usuario o contraseña incorrectos"
+      );
    }
 };
