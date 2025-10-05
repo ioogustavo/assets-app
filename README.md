@@ -79,7 +79,11 @@ npm install
 
 ## Ejecución del proyecto
 
--  **Modo desarrollo:** `npm run dev`
+-  **Modo desarrollo:**
+
+   1. Ejecutar `npm run dev`
+   2. Abrir el navegador y acceder a: `http://localhost:5173` (Vite abre el proyecto en este puerto por defecto)
+
 -  **Modo producción:**
    1. Ejecutar `npm run build`
    2. Servir la carpeta `dist/` con cualquier servidor estático (por ejemplo `serve -s dist`)
